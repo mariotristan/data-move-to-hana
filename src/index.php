@@ -17,7 +17,6 @@
 	 * Although written by an employee of the SAP(R) AG, this source code is not affliated
 	 * nor endorsed by SAP as an official product or support.
 	 *
-	 * 
 	 */
  	
 	/* Constants */

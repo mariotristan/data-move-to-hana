@@ -118,6 +118,14 @@
 				<?php if($csv_out != ''){ echo $csv_out; } ?></p>
 				</ul>
 				</div>				
+
+				<div data-role="collapsible" data-collapsed="true">
+				<h3>Step 3: Grant Privileges</h3>
+				<p>Once you have your new SCHEMA you may need to grant certain privileges in order to create the various views.<br><br>
+				<ul>
+				<?php echo "GRANT SELECT on SCHEMA ".$schema." to _SYS_REPO WITH GRANT OPTION;"; ?></p> 
+				</ul>
+				</div>				
 				
 				<?php } ?>				
 			</div>
@@ -129,7 +137,7 @@
 		<div data-role="navbar">
 		<p>
 			<ul>
-				<li><div align="center">MySQL to SAP HANA&reg; v0.01 beta</div></li>
+				<li><div align="center">MySQL to SAP HANA&reg; v0.02 beta</div></li>
 			</ul>
 		</p>
 		</div><!-- /navbar -->

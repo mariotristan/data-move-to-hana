@@ -10,7 +10,7 @@
 		/* Generate dynamic list of databases associated with user */
 		$select_list = '';
 		$result = mysql_query("SHOW DATABASES");
-	  while($row = mysql_fetch_array( $result )){
+	    while($row = mysql_fetch_array( $result )){
 		  $select_list .= "<option "; 
 		  if($db == $row[0]){
 			  $select_list .= "selected";
@@ -27,16 +27,18 @@
 		$pri_out = '';
 		$uni_out = '';
 		$csv_out = '';
+		$csv1_out = '';
 
 		/* Begin generating output */		
 		$result2 = mysql_query("SHOW TABLES IN $db");
 		$sql_out .= 'DROP SCHEMA '.$schema.';<br>';
 		$sql_out .= 'CREATE SCHEMA '.$schema.';<br>';
-    $sql_out .= 'SET SCHEMA '.$schema.';<br><br>';
+        $sql_out .= 'SET SCHEMA '.$schema.';<br><br>';
 		
 		$j = 0;
 		while($row2 = mysql_fetch_array( $result2 )) {
-			$csv_out .= "<li>mysqldump -u ".$login." -p".$password." ".$db." ".$row2[0]." --add-locks=false --add-drop-table=false --comments=false --no-create-db --no-create-info --set-charset=false --extended-insert=false --comments=false | sed 's/\`/\"/g'> ".$db."_".$row2[0].".sql</li>";
+		  $csv_out .= "<li>mysqldump -u ".$login." -p".$password." ".$db." ".$row2[0]." --add-locks=false --add-drop-table=false --comments=false --no-create-db --no-create-info --set-charset=false --extended-insert=false --comments=false | sed 's/\`/\"/g'> ".$db."_".$row2[0].".sql</li>";
+		  $csv1_out .= "<li>mysqldump -u ".$login." -p".$password." ".$db." ".$row2[0]." --add-locks=false --add-drop-table=false --comments=false --no-create-db --no-create-info --set-charset=false --extended-insert=false --comments=false --fields-terminated-by=, -t --tab=/tmp | sed 's/\`/\"/g'> ".$db."_".$row2[0].".sql</li>";
 		  $tbl_out .= '<br> Table ('.$j++.')="'.$row2[0].'"<br>';
 		  $sql_out .= 'DROP TABLE "'.$row2[0].'";<br>';
 		  $result3 = mysql_query("SHOW COLUMNS FROM $row2[0] FROM $db ");
@@ -92,7 +94,7 @@
 			  	$sql_out .= ' unique';
 			  }
 
-		    $tbl_out .= '<tr>
+		      $tbl_out .= '<tr>
 		             <td>  Column ('.$k++.')=</td>
 		             <td> '. $row3[0] .'</td>
 		             <td> '. $row3[1] .'</td>
@@ -109,7 +111,7 @@
 		  $pri_out = '';
 		  $uni_out = '';
 		  
-	    $sql_out .= '<br>);<br><br><br>';
+	      $sql_out .= '<br>);<br><br><br>';
 		  $tbl_out .= '</table><br>';
 		}
 		mysql_close($link);

@@ -117,6 +117,10 @@
 				<ul>
 				<?php if($csv_out != ''){ echo $csv_out; } ?></p>
 				</ul>
+				<p>For CSV style files, these exports are stored in /tmp.<br><br>
+				<ul>
+				<?php if($csv1_out != ''){ echo $csv1_out; } ?></p>
+				</ul>
 				</div>				
 
 				<div data-role="collapsible" data-collapsed="true">

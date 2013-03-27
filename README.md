@@ -7,7 +7,7 @@ Move to HANA is a simple interface for simple migration of data from one databas
 Quick start
 -----------
 
-Clone the repo, `git clone https://github.com/SAP/move-to-hana.git`, or [download the latest release](https://github.com/SAP/move-to-hana/master).
+Clone the repo, `git clone https://github.com/SAP/data-move-to-hana.git`, or [download the latest release](https://github.com/SAP/data-move-to-hana/master).
 
 
 Authors
